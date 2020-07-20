@@ -1,0 +1,24 @@
+// IOCs from https://www.proofpoint.com/us/blog/security-briefs/emotet-returns-after-five-month-hiatus
+//
+union DeviceFileEvents, DeviceNetworkEvents
+| where SHA256 == "64b341748b4d7b79976592e9eb4f04444436073d12384d8b98834931e9bc84cf"
+or SHA256 == "b7056c2e7ac89807060c5de0d28090f2dc827182433c186bbf8a28355a375627"
+//
+// C2 ioc 
+//
+| where RemoteIP == "5.196.74.210"
+or RemoteIP == "209.141.54.221"
+or RemoteIP == "50.116.86.205"
+or RemoteIP == "78.24.219.147"
+or RemoteIP == "210.165.156.91"
+or RemoteIP == "37.187.72.193"
+or RemoteIP == "157.245.99.39"
+or RemoteIP == "190.55.181.54"
+or RemoteIP == "37.139.21.175"
+or RemoteIP == "169.239.182.217"
+or RemoteIP == "104.236.246.93"
+or RemoteIP == "200.55.243.138"
+or RemoteIP == "74.208.45.104"
+or RemoteIP == "5.39.91.110"
+or RemoteIP == "79.7.158.208"
+| project Timestamp,  FileName, DeviceName, InitiatingProcessFileName, InitiatingProcessParentFileName, RemoteIP
